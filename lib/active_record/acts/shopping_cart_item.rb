@@ -10,7 +10,7 @@ module ActiveRecord
         # Prepares the class to act as a cart item.
         #
         # Receives as a parameter the name of the class that acts as a cart
-        # 
+        #
         # Example:
         #
         #   acts_as_shopping_cart_item :cart
@@ -18,7 +18,7 @@ module ActiveRecord
         #
         def acts_as_shopping_cart_item_for(cart_class)
           self.send :include, ActiveRecord::Acts::ShoppingCartItem::InstanceMethods
-          belongs_to :owner, :polymorphic => true
+          belongs_to :cart, :polymorphic => true
           belongs_to :item, :polymorphic => true
         end
 
