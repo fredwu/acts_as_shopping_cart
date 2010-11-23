@@ -2,14 +2,14 @@ module ActiveRecord
   module Acts
     module ShoppingCart
       module InstanceMethods
-        
+
         #
         # Returns the subtotal by summing the price times quantity for all the items in the cart
         #
         def subtotal
           ("%.2f" % cart_items.sum("price * quantity")).to_f
         end
-        
+
         #
         # Returns the total by summing the subtotal, taxes and shipping_cost
         #
@@ -59,6 +59,13 @@ module ActiveRecord
         #
         def total_unique_items
           cart_items.sum(:quantity)
+        end
+
+        #
+        # Cart items enumerable
+        #
+        def items
+          cart_items
         end
       end
     end
