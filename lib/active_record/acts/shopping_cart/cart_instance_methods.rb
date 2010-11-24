@@ -36,7 +36,7 @@ module ActiveRecord
         #
         def delete(object)
           cart_item = item_for(object)
-          cart_items.delete(cart_item)
+          cart_items.destroy(cart_item)
         end
 
         #
