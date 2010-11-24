@@ -14,7 +14,11 @@ module ActiveRecord
         # Returns the total by summing the subtotal, taxes and shipping_cost
         #
         def total
-          ("%.2f" % (subtotal + self.taxes + shipping_cost)).to_f
+          total = subtotal
+          total += taxes         if self.respond_to?(:taxes)
+          total += shipping_cost if self.respond_to?(:shipping_cost)
+
+          ("%.2f" % total).to_f
         end
 
         #
