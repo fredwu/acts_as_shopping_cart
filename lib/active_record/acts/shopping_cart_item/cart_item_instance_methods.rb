@@ -14,7 +14,7 @@ module ActiveRecord
         #
         def update_quantity(new_quantity)
           self.quantity = new_quantity
-          self.save
+          save
         end
 
         #
@@ -22,7 +22,7 @@ module ActiveRecord
         #
         def update_price(new_price)
           self.price = new_price
-          self.save
+          save
         end
       end
     end

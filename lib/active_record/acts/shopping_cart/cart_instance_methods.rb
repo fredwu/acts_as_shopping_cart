@@ -35,22 +35,22 @@ module ActiveRecord
         # Delete an item from the cart
         #
         def delete(object)
-          cart_item = item_for(object)
-          cart_items.destroy(cart_item)
+          cart_items.destroy(item_for(object))
         end
 
         #
         # Remove an item from the cart
         #
         def remove(object, quantity = 1)
-          cart_item = item_for(object)
-          if cart_item
+          if cart_item = item_for(object)
             if cart_item.quantity <= quantity
               cart_items.delete(cart_item)
             else
               cart_item.quantity = (cart_item.quantity - quantity)
               cart_item.save
             end
+          else
+            false
           end
         end
 
